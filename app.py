@@ -20,6 +20,19 @@ class Student(db.Model):
     self.fname=fname
     self.lname=lname
     self.email=email
+    
+    
+class FeedbackForm(db.Model):
+  __tablename__='feedback'
+  id=db.Column(db.Integer,primary_key=True)
+  name=db.Column(db.String(40))
+  email=db.Column(db.String(40))
+  contact=db.Column(db.String(40))
+  
+  def __init__(self,name,contact,email):
+    self.name=name
+    self.contact=contact
+    self.email=email
  
 @app.route('/')
 def index():
@@ -30,17 +43,22 @@ def submit():
   fname= request.form['fname']
   lname=request.form['lname']
   email=request.form['email']
- 
   student=Student(fname,lname,email)
   db.session.add(student)
   db.session.commit()
- 
-  #fetch a certain student
-  studentResult=db.session.query(Student).filter(Student.id==1)
-  for result in studentResult:
-    print(result.fname)
- 
+  
   return render_template('success.html', data=fname)
+  
+@app.route('/feedback', methods=['POST'])
+def feedback():
+  name= request.form['name']
+  contact=request.form['contact']
+  email=request.form['email']
+  feedback=FeedbackForm(name,contact,email)
+  db.session.add(feedback)
+  db.session.commit()
+
+  return render_template('feedback.html', data=email)
  
 if __name__ == "__main__":
     app.run(debug=True)
