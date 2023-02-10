@@ -2,7 +2,8 @@ from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 import boto3
 from werkzeug.utils import secure_filename
- #source env/Scripts/activate
+ #source env/Scripts/activate  -- 
+ 
  
  
 app = Flask(__name__)
@@ -75,7 +76,23 @@ def upload():
 
     return render_template("index.html",msg =msg)
   
+@app.route('/zipupload',methods=['post'])
+def zip_upload():
+    if request.method == 'POST':
+        img = request.files['file']
+        if img:
+                filename = secure_filename(img.filename)
+                img.save(filename)
+                s3.upload_file(
+                    Bucket = BUCKET_NAME,
+                    Filename=filename,
+                    Key = filename
+                )
+                zmsg = "Zip File Upload Done ! "
   
+    return render_template("index.html",zmsg =zmsg)  
+  
+ 
 @app.route('/feedback', methods=['POST'])
 def feedback():
   name= request.form['name']
