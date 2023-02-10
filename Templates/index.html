@@ -3,55 +3,50 @@
 <head>
 <title>Million Visions Registration Page </title>
 <link rel="stylesheet" href="/static/css/main.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />    
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" /> 
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+<title>Bootstrap Example</title>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>   
 </head>
 <body >
-<div class="container" >
-    <div class="row" style="padding:50px;">
-        <h1 id="form-header" >Million Visions SDE Interns Data Collection  </h1>
-        <form action="/submit" method="POST">
-            <div class="mb-3">
-              <label class="form-label">First name:</label>
-              <input type="text" id="fname" name="fname" class="form-control">
-            </div>
-            <div class="mb-3">
-                <label class="form-label">Last name:</label>
-                <input type="text" id="lname" name="lname" class="form-control">
-            </div>
-            <div class="mb-3">
-                <label class="form-label">Email:</label>
-                <input type="text" id="email" name="email" class="form-control">
-            </div>
-            
-        <br/>
-        <button type="submit"  class="btn btn-success">Submit</button>
+  <br><br>
+  <br><br>
+  <h1>Million Visions Task </h1>
+  
+  <div  class="d-flex align-items-stretch">
+  <div id="upload-body" class="upload-body ">
+    <h1>Single File Upload</h1>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+      <label class="form-label" for="customFile" aria-placeholder="Docx/Pdf">Resume Upload</label>
+        <input type="file" name="file" value="file">
+      <br>
+      <input type="submit" name="upload" value="Upload" class="btn btn-success">
       </form>
-
-      <div id="upload-body" class="upload-body ">
-        <h1>Documents Upload</h1>
+      {{msg}}
+      </div>
+      <div  id="upload-body" class="upload-body ">
+        <h1>Multiple File Upload</h1>
         <form action="/upload" method="post" enctype="multipart/form-data">
-          <label class="form-label" for="customFile" aria-placeholder="Docx/Pdf">Resume Upload</label>
-            <input type="file" name="file" value="file">
+          <label class="form-label" for="customFile" aria-placeholder="Docx/Pdf">Multiple File Upload</label>
+            <input type="file" name="file" value="file" multiple>
           <br>
           <input type="submit" name="upload" value="Upload" class="btn btn-success">
           </form>
-          {{msg}}
+           {{msg}}   
           </div>
-
-          <div id="upload-body" class="upload-body ">
-            <h1>zip Upload</h1>
-            <form action="/zipupload" method="post" enctype="multipart/form-data">
-              <label class="form-label" for="customFile" aria-placeholder="Docx/Pdf">ZIP Upload</label>
-                <input type="file" name="file" value="file">
+          <div  id="upload-body" class="upload-body ">
+            <h1>Zip File Upload</h1>
+            <form action="/upload" method="post" enctype="multipart/form-data">
+              <label class="form-label" for="customFile" aria-placeholder="Docx/Pdf">Zip File Upload</label>
+                <input type="file" name="file" value="file" multiple>
               <br>
               <input type="submit" name="upload" value="Upload" class="btn btn-success">
               </form>
               {{zmsg}}
               </div>
-   </div>
-</div>
+            
+        </div>
 
-
-  
 </body>
 </html>
