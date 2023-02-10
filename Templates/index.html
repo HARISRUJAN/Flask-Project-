@@ -2,12 +2,13 @@
 <html>
 <head>
 <title>Million Visions Registration Page </title>
+<link rel="stylesheet" href="/static/css/main.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />    
 </head>
 <body >
 <div class="container" >
     <div class="row" style="padding:50px;">
-        <p><h1 id=s"form-header" >Million Visions SDE Interns Data Collection  </h1></p>
+        <h1 id="form-header" >Million Visions SDE Interns Data Collection  </h1>
         <form action="/submit" method="POST">
             <div class="mb-3">
               <label class="form-label">First name:</label>
@@ -21,10 +22,25 @@
                 <label class="form-label">Email:</label>
                 <input type="text" id="email" name="email" class="form-control">
             </div>
-            <br/><br/>
-            <button type="submit" class="btn btn-success">Submit</button>
+            
+        <br/>
+        <button type="submit"  class="btn btn-success">Submit</button>
+      </form>
+
+      <div id="upload-body" class="upload-body ">
+        <h1>Documents Upload</h1>
+        <form action="/upload" method="post" enctype="multipart/form-data">
+          <label class="form-label" for="customFile" aria-placeholder="Docx/Pdf">Resume Upload</label>
+            <input type="file" name="file" value="file">
+          <br>
+          <input type="submit" name="uload" value="Upload" class="btn btn-success">
           </form>
+          {{msg}}
+          </div>
    </div>
 </div>
+
+
+  
 </body>
 </html>

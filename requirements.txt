@@ -1,0 +1,8 @@
+python
+Flask
+psycopg2
+flask_sqlalchemy
+werkzeug.utils
+boto3
+
+
