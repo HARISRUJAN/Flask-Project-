@@ -33,10 +33,21 @@
           <label class="form-label" for="customFile" aria-placeholder="Docx/Pdf">Resume Upload</label>
             <input type="file" name="file" value="file">
           <br>
-          <input type="submit" name="uload" value="Upload" class="btn btn-success">
+          <input type="submit" name="upload" value="Upload" class="btn btn-success">
           </form>
           {{msg}}
           </div>
+
+          <div id="upload-body" class="upload-body ">
+            <h1>zip Upload</h1>
+            <form action="/zipupload" method="post" enctype="multipart/form-data">
+              <label class="form-label" for="customFile" aria-placeholder="Docx/Pdf">ZIP Upload</label>
+                <input type="file" name="file" value="file">
+              <br>
+              <input type="submit" name="upload" value="Upload" class="btn btn-success">
+              </form>
+              {{zmsg}}
+              </div>
    </div>
 </div>
 

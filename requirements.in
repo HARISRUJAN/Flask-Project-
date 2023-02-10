@@ -1,0 +1,4 @@
+boto3==1.26.66
+Flask==2.2.2
+flask_sqlalchemy==3.0.3
+Werkzeug==2.2.2
